@@ -33,4 +33,16 @@ public class DriverSetup {
     public void closeBrowser(){
         getDriver().quit();
     }
+
+    public WebDriver getBrowser(String name){
+        if (name.equalsIgnoreCase("Edge"))
+            return new EdgeDriver();
+        else if (name.equalsIgnoreCase("chrome"))
+            return new ChromeDriver();
+        else if (name.equalsIgnoreCase("firefox"))
+            return new FirefoxDriver();
+        else {
+            throw new RuntimeException("Browser is not available with the given name: " + name);
+        }
+    }
 }
