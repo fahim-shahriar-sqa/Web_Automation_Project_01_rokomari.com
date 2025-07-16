@@ -28,4 +28,9 @@ public class DriverSetup {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         setDriver(driver);
     }
+
+    @AfterMethod
+    public void closeBrowser(){
+        getDriver().quit();
+    }
 }
