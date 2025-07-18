@@ -153,6 +153,12 @@ public class BasePage {
         actions.dragAndDrop(getElement(source), getElement(target)).perform();
     }
 
+    public void scrollToElement(By locator) {
+        WebElement element = getElement(locator);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+
     //  Alert Handling
 
     public void acceptAlert() {
@@ -169,6 +175,14 @@ public class BasePage {
 
     public void sendTextToAlert(String text) {
         getDriver().switchTo().alert().sendKeys(text);
+    }
+
+    // Sendkeys
+
+    public void sendKeys(By locator, String text) {
+        WebElement element = getElement(locator);
+        element.clear();
+        element.sendKeys(text);
     }
 
 
